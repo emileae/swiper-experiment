@@ -1,0 +1,1 @@
+Playing with the idangerous swiper, trying to get a responsive layout, with a nested vertical swiper as well as a horizontal swiper nested with the vertical swiper
