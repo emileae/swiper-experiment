@@ -18,7 +18,8 @@
 
 /* Nested Swipers*/
 .swiper-nested1 {
-	margin-bottom:30px;
+	margin:0px;
+    padding: 0px;
 }
 .swiper-nested1, .swiper-nested1 .swiper-slide {
 	width:630px;
