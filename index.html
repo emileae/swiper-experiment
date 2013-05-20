@@ -18,10 +18,15 @@
 <!--<link rel="stylesheet" href="css/style.css?v=1.8">-->
 <link rel="stylesheet" href="css/swiper-demos.css?v=1.8">
 <script  src="js/libs/jquery-1.7.1.min.js"></script>
+<style>
+    p{color: black}
+</style>
+
 
 <!-- Adjusting swiper dimensions needs to be declared before the main swiper js so that the appropriate calculations can be made -->
 <script type="text/javascript">
 $(document).ready(function() {
+    
     $('.swiper-container').css('width', $(window).width());
     $('.swiper-container').css('height', $(window).height());
     $('.swiper-slide').css('width', $(window).width());
@@ -65,11 +70,17 @@ var request = new XMLHttpRequest();
 <body>
 
   <div class="swiper-container swiper-nested1 swiper-n1 main_container">
-    <div class="pagination-nested1 pagination-n1"></div>
+    <!--<div class="pagination-nested1 pagination-n1"></div>-->
     <div class="swiper-wrapper main_wrapper">
-      <div class="swiper-slide red-slide"> Slide 1 </div>
-      <div class="swiper-slide orange-slide"> Slide 2 </div>
-      <div class="swiper-slide green-slide"> Slide 3 </div>
+      <div id="page_0" class="swiper-slide red-slide"> Slide 1 </div>
+      <div id="page_1" class="swiper-slide orange-slide">Slide 2 </div>
+      <div id="page_2" class="swiper-slide green-slide"> Slide 3 </div>
+      <div id="page_3" class="swiper-slide red-slide"> Slide 4 </div>
+      <div id="page_4" class="swiper-slide orange-slide"> Slide 5 </div>
+      <div id="page_2" class="swiper-slide green-slide"> Slide 6 </div>
+      <div id="page_0" class="swiper-slide red-slide"> Slide 7 </div>
+      <div id="page_1" class="swiper-slide orange-slide"> Slide 8 </div>
+      <div id="page_2" class="swiper-slide green-slide"> Slide 9 </div>
     </div>
   </div>
 
