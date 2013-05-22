@@ -42,7 +42,7 @@ function load_Slide(){
     
     var pp = active_index-2;
         load_buffer_slides(pp);
-        load_Swiper_pp(pp)
+        load_Swiper_pp(pp);
     var p = active_index-1;
         //load_buffer_slides(p);
         //load_Swiper_p(p)
@@ -53,7 +53,14 @@ function load_Slide(){
         //load_Swiper_n(n)
     var nn = active_index+2;
         load_buffer_slides(nn);
-        load_Swiper_nn(nn)
+        load_Swiper_nn(nn);
+    
+    $('#pg_'+nn).find('.generic_img').css('visibility', 'hidden');//hide generic images on loaded slides
+    $('#pg_'+pp).find('.generic_img').css('visibility', 'hidden');//hide generic images on loaded slides
+    $('#pg_'+p).find('.generic_img').css('visibility', 'visible');//show images that are on active slide-1
+    $('#pg_'+c).find('.generic_img').css('visibility', 'visible');//show images that are on active slide
+    $('#pg_'+n).find('.generic_img').css('visibility', 'visible');//show images that are on active slide+1
+    
     
     function load_buffer_slides(slide_index){
         if (0 <= slide_index && slide_index <= (number_of_slides-1)){
@@ -63,26 +70,6 @@ function load_Slide(){
         };
     };
 
-    //Load next, current, and previous nested swipers...
-    //var swiper_n = null;
-    //var swiper_p = null;
-    //first check if next slide contains nested swiper
-    //var slide_indexes_nested = [4, 6, 7, 8];//made a global variable
-    //if ($.inArray(nn, slide_indexes_nested) != -1){
-    //    swiper_n = $('.swiper-nest'+nn).swiper({
-    //        slidesPerSlide : 1,
-    //        moveStartThreshold:10,
-    //        mode: 'vertical',
-    //    });
-    //};
-    
-    /*if ($.inArray(c, slide_indexes_nested) != -1){
-        swiper_c = $('.swiper-nest'+c).swiper({
-            slidesPerSlide : 1,
-            moveStartThreshold:10,
-            mode: 'vertical',
-        });
-    };*/
     if ($.inArray(pp, slide_indexes_nested) != -1){
         swiper_p = $('.swiper-nest'+pp).swiper({
             slidesPerSlide : 1,

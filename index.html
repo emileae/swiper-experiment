@@ -24,7 +24,11 @@
     #climbing_img{position: relative; top 10%;left: 10%;height: 300px;}
     .text_slide{font-size: 25px; color: black;}
     .generic_img{position: relative; width: 90%;}
-    .page_container{position: relative; height: 100%; overflow-y: scroll}
+    .page_container{position: relative; height: 100%; overflow-y: scroll; -webkit-overflow-scrolling: touch;}
+    
+    /*CSS3 caching - needs to be at the bottom of the style sheet*/
+    body:after{content:url(imgs/img_1.jpg) url(imgs/img_2.jpg) url(imgs/img_3.jpg) url(imgs/img_4.jpg) url(imgs/img_5.jpg) url(imgs/img_6.jpg) url(imgs/img_7.jpg) url(imgs/img_8.jpg) url(imgs/img_9.jpg) url(imgs/img_10.jpg);display:none;}
+    
 </style>
 
 
@@ -69,7 +73,7 @@ var request = new XMLHttpRequest();
 <!-- Swiper -->
 <script  src="js/idangerous.swiper-1.9.3.min.js"></script>
 <!-- Swiper Scrollbar plugin -->
-<script  src="js/idangerous.swiper.scrollbar-1.2.js"></script>
+<!--<script  src="js/idangerous.swiper.scrollbar-1.2.js"></script>-->
 <!-- Demos code -->
 <script  src="js/swiper-demos.js"></script>
 </head>
@@ -79,17 +83,17 @@ var request = new XMLHttpRequest();
   <div class="swiper-container swiper-nested1 swiper-n1 main_container">
     <!--<div class="pagination-nested1 pagination-n1"></div>-->
     <div class="swiper-wrapper main_wrapper">
-      <div id="page_0" class="swiper-slide red-slide"> Slide 1 </div>
-      <div id="page_1" class="swiper-slide orange-slide">Slide 2 </div>
-      <div id="page_2" class="swiper-slide green-slide"> Slide 3 </div>
-      <div id="page_3" class="swiper-slide red-slide"> Slide 4 </div>
-      <div id="page_4" class="swiper-slide orange-slide"> Slide 5 </div>
-      <div id="page_5" class="swiper-slide green-slide"> Slide 6 </div>
-      <div id="page_6" class="swiper-slide red-slide"> Slide 7 </div>
-      <div id="page_7" class="swiper-slide orange-slide"> Slide 8 </div>
-      <div id="page_8" class="swiper-slide green-slide"> Slide 9 </div>
-      <div id="page_6" class="swiper-slide red-slide"> Slide 10 </div>
-      <div id="page_7" class="swiper-slide orange-slide"> Slide 11 </div>
+      <div id="pg_0" class="swiper-slide red-slide"> Slide 1 </div>
+      <div id="pg_1" class="swiper-slide orange-slide">Slide 2 </div>
+      <div id="pg_2" class="swiper-slide green-slide"> Slide 3 </div>
+      <div id="pg_3" class="swiper-slide red-slide"> Slide 4 </div>
+      <div id="pg_4" class="swiper-slide orange-slide"> Slide 5 </div>
+      <div id="pg_5" class="swiper-slide green-slide"> Slide 6 </div>
+      <div id="pg_6" class="swiper-slide red-slide"> Slide 7 </div>
+      <div id="pg_7" class="swiper-slide orange-slide"> Slide 8 </div>
+      <div id="pg_8" class="swiper-slide green-slide"> Slide 9 </div>
+      <div id="pg_9" class="swiper-slide red-slide"> Slide 10 </div>
+      <div id="pg_10" class="swiper-slide orange-slide"> Slide 11 </div>
     </div>
   </div>
 
