@@ -79,7 +79,7 @@ function load_Slide(){
     };
     
     
-    unload_rest_slides(c); // not calling unload slides function...........
+    //unload_rest_slides(c); // unload slides function...........
     function unload_rest_slides(active_index){
         var slide_clear_list = [];
         
