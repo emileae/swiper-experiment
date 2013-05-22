@@ -30,7 +30,7 @@ $(function(){
         var response_html_pg = req(i);
         load_slide_init = swiperN1.getSlide(i);
         load_slide_init.html(response_html_pg);
-        load_Swiper_n(i);//this is to load all the initial swipers that may be present on initial slides
+        //load_Swiper_n(i);//this is to load all the initial swipers that may be present on initial slides
     };
     /* END LOAD INITIAL SLIDES */
     
@@ -44,13 +44,13 @@ function load_Slide(){
         load_buffer_slides(pp);
         load_Swiper_pp(pp)
     var p = active_index-1;
-        load_buffer_slides(p);
-        load_Swiper_p(p)
+        //load_buffer_slides(p);
+        //load_Swiper_p(p)
     var c = active_index;
         //load_buffer_slides(c);//this slide is already loaded
     var n = active_index+1;
-        load_buffer_slides(n);
-        load_Swiper_n(n)
+        //load_buffer_slides(n);
+        //load_Swiper_n(n)
     var nn = active_index+2;
         load_buffer_slides(nn);
         load_Swiper_nn(nn)
