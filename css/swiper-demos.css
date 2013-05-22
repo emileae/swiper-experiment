@@ -21,14 +21,16 @@
 	margin:0px;
     padding: 0px;
 }
+/* looks like the swiper-slide needs some initial height and width... if disabled then swiper on indexpg 7 doesn't work consistently */
 .swiper-nested1, .swiper-nested1 .swiper-slide {
 	width:630px;
 	height:250px;
-	color:#fff;
+	/*color:#fff;
 	text-align:center;
 	line-height:250px;
-	font-size: 40px;
+	font-size: 40px;*/
 }
+
 .pagination-nested1 {
     left: 10px;
     top: 230px;

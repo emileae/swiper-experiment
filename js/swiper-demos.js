@@ -10,79 +10,155 @@ $(function(){
     })
     
     thresh_width = 10;
-    number_of_slides = 9;
+    number_of_slides = 11;//set number of slides and make sure that html in index.html corresponds
+    slide_indexes_nested = [1, 4, 6, 7, 8];//slide indexes containing vertical swipers
 
 	/* Nested Swipers. Vertical Swiper inside of horizontal: */	
 	var swiperN1 = $('.swiper-n1').swiper({
-		//pagination : '.pagination-n1',
-        /*loop: true,*/
         preventClassNoSwiping:true,
 		slidesPerSlide : 1,
         initialSlide: 0,
         moveStartThreshold:thresh_width,
         onSlideChangeEnd: load_Slide,
 	});
-	
+    
+    /* START LOAD INITIAL SLIDES */
+    
+    var number_of_initial_slides = 3;
+    
+    for (var i = 0; i < number_of_initial_slides; i++) {
+        var response_html_pg = req(i);
+        load_slide_init = swiperN1.getSlide(i);
+        load_slide_init.html(response_html_pg);
+        load_Swiper_n(i);//this is to load all the initial swipers that may be present on initial slides
+    };
+    /* END LOAD INITIAL SLIDES */
+    
 /* callback onSlideChangeEnd */
 function load_Slide(){
-    
-    /*alert(swiperN1.activeIndex);*/
-    var prev_index = swiperN1.previousIndex;
+
     var active_index = swiperN1.activeIndex;
     var slide_to_load = "";
-    var slide_to_unload = "";
     
+    var pp = active_index-2;
+        load_buffer_slides(pp);
+        load_Swiper_pp(pp)
+    var p = active_index-1;
+        load_buffer_slides(p);
+        load_Swiper_p(p)
+    var c = active_index;
+        //load_buffer_slides(c);//this slide is already loaded
+    var n = active_index+1;
+        load_buffer_slides(n);
+        load_Swiper_n(n)
+    var nn = active_index+2;
+        load_buffer_slides(nn);
+        load_Swiper_nn(nn)
     
-    
-    var load_yes_no = false;
-    var unload_yes_no = false;
-    
-    if (prev_index<active_index){
-        if (active_index < (number_of_slides-1)){
-            console.log('moved right, load slide-1:'+active_index);
-            slide_to_load = swiperN1.getSlide(active_index+1);
-            if ((active_index-2) > 0){
-                slide_to_unload = swiperN1.getSlide(active_index-2);
-                unload_yes_no = true;
-            };
-            var index_request = active_index+1;
-            load_yes_no = true
-            };
-    }else if (prev_index>active_index){
-        if (active_index > 0){
-            console.log('moved left load slide+1:'+active_index);
-            slide_to_load = swiperN1.getSlide(active_index-1);
-            if ((active_index+2) < number_of_slides-1){
-                slide_to_unload = swiperN1.getSlide(active_index+2);
-                unload_yes_no = true;
-            }
-            var index_request = active_index-1;
-            load_yes_no = true
+    function load_buffer_slides(slide_index){
+        if (0 <= slide_index && slide_index <= (number_of_slides-1)){
+            slide_to_load = swiperN1.getSlide(slide_index);
+            var response_html = req(slide_index);
+            slide_to_load.html(response_html);
         };
     };
+
+    //Load next, current, and previous nested swipers...
+    //var swiper_n = null;
+    //var swiper_p = null;
+    //first check if next slide contains nested swiper
+    //var slide_indexes_nested = [4, 6, 7, 8];//made a global variable
+    //if ($.inArray(nn, slide_indexes_nested) != -1){
+    //    swiper_n = $('.swiper-nest'+nn).swiper({
+    //        slidesPerSlide : 1,
+    //        moveStartThreshold:10,
+    //        mode: 'vertical',
+    //    });
+    //};
     
-    var response_html = req(index_request);
-    if (load_yes_no){
-        slide_to_load.html(response_html);
-        /*console.log("response_html: "+response_html);*/
-    };
-    if (unload_yes_no){
-        slide_to_unload.html("");
-    };
-    
-    /*activating the swiperN2*/
-    if ((swiperN1.activeIndex) == 4){
-        var swiperN2 = $('.swiper-n2').swiper({
-            //pagination : '.pagination-n2',
+    /*if ($.inArray(c, slide_indexes_nested) != -1){
+        swiper_c = $('.swiper-nest'+c).swiper({
+            slidesPerSlide : 1,
+            moveStartThreshold:10,
+            mode: 'vertical',
+        });
+    };*/
+    if ($.inArray(pp, slide_indexes_nested) != -1){
+        swiper_p = $('.swiper-nest'+pp).swiper({
             slidesPerSlide : 1,
             moveStartThreshold:10,
             mode: 'vertical',
         });
     };
-
-};
+    
+    
+    unload_rest_slides(c); // not calling unload slides function...........
+    function unload_rest_slides(active_index){
+        var slide_clear_list = [];
+        
+        var start_slide = 0;
+        var top_left_side = active_index-2//not inclusive
+        var bottom_right_side = active_index+2//not inclusive
+        var end_slide = number_of_slides-1;
+        
+        //set lists containing the slide indexes of slides to be cleared
+        for (i=start_slide; i<top_left_side; i++){
+            slide_clear_list.push(i);
+        };
+        for (i=(bottom_right_side+1); i<=end_slide; i++){
+            slide_clear_list.push(i);
+        };
+        
+        //clear slides with indexes in list
+        for (i=0; i<slide_clear_list.length; i++){
+            var slide_to_clear = swiperN1.getSlide(slide_clear_list[i]);
+            slide_to_clear.html("");
+        };
+        //console.log("slide_clear_list"+slide_clear_list);
+    };
+    
+};/*end function load_Slide*/
     
 });
+
+/* START SWIPER LOADING FUNCTIONS */
+function load_Swiper_n(slide){
+    if ($.inArray(slide, slide_indexes_nested) != -1){
+        swiper_n = $('.swiper-nest'+slide).swiper({
+            slidesPerSlide : 1,
+            moveStartThreshold:10,
+            mode: 'vertical',
+        });
+    };
+};
+function load_Swiper_p(slide){
+    if ($.inArray(slide, slide_indexes_nested) != -1){
+        swiper_p = $('.swiper-nest'+slide).swiper({
+            slidesPerSlide : 1,
+            moveStartThreshold:10,
+            mode: 'vertical',
+        });
+    };
+};
+function load_Swiper_nn(slide){
+    if ($.inArray(slide, slide_indexes_nested) != -1){
+        swiper_nn = $('.swiper-nest'+slide).swiper({
+            slidesPerSlide : 1,
+            moveStartThreshold:10,
+            mode: 'vertical',
+        });
+    };
+};
+function load_Swiper_pp(slide){
+    if ($.inArray(slide, slide_indexes_nested) != -1){
+        swiper_pp = $('.swiper-nest'+slide).swiper({
+            slidesPerSlide : 1,
+            moveStartThreshold:10,
+            mode: 'vertical',
+        });
+    };
+};
+/* END SWIPER LOADING FUNCTIONS */
 
 function req(active_index){
     var request = new XMLHttpRequest();
@@ -93,22 +169,16 @@ function req(active_index){
     request.onreadystatechange = function(){
         if (request.readyState == 4) {
             if (request.status == 200 || request.status == 0) {
-                console.log("response " + request.responseText);
+                //console.log("response " + request.responseText);
                 response_html = request.responseText;
             }
         }
     };
-    if (active_index <= (number_of_slides-1)){
+    if (active_index <= (number_of_slides-1) && active_index >= 0){
         request.send();
+        return response_html
     }
-    return response_html
 };
-
-
-
-
-
-
 
 
 
