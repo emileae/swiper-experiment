@@ -11,7 +11,7 @@ $(function(){
     
     thresh_width = 10;
     number_of_slides = 11;//set number of slides and make sure that html in index.html corresponds
-    slide_indexes_nested = [1, 4, 6, 7, 8];//slide indexes containing vertical swipers
+    slide_indexes_nested = [];//slide indexes containing vertical swipers
 
 	/* Nested Swipers. Vertical Swiper inside of horizontal: */	
 	var swiperN1 = $('.swiper-n1').swiper({
@@ -128,6 +128,7 @@ function load_Swiper_n(slide){
             slidesPerSlide : 1,
             moveStartThreshold:10,
             mode: 'vertical',
+            //scrollContainer: true,
         });
     };
 };
@@ -137,6 +138,7 @@ function load_Swiper_p(slide){
             slidesPerSlide : 1,
             moveStartThreshold:10,
             mode: 'vertical',
+            //scrollContainer: true,
         });
     };
 };
@@ -146,6 +148,7 @@ function load_Swiper_nn(slide){
             slidesPerSlide : 1,
             moveStartThreshold:10,
             mode: 'vertical',
+            //scrollContainer: true,
         });
     };
 };
@@ -155,6 +158,7 @@ function load_Swiper_pp(slide){
             slidesPerSlide : 1,
             moveStartThreshold:10,
             mode: 'vertical',
+            //scrollContainer: true,
         });
     };
 };
