@@ -15,7 +15,7 @@ $(function(){
 
 	/* Nested Swipers. Vertical Swiper inside of horizontal: */	
 	var swiperN1 = $('.swiper-n1').swiper({
-        speed: 100,
+        speed: 200,
         preventClassNoSwiping:true,
 		slidesPerSlide : 1,
         initialSlide: 0,
