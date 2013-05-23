@@ -24,7 +24,7 @@
     #climbing_img{position: relative; top 10%;left: 10%;height: 300px;}
     .text_slide{font-size: 25px; color: black;}
     .generic_img{position: relative; width: 90%;-webkit-transform:translate3d(0px,0,0)}
-    .page_container{position: relative; height: 100%; overflow-y: scroll; -webkit-overflow-scrolling: touch;}
+    .page_container{position: relative; height: 100%; overflow-y: scroll; -webkit-overflow-scrolling: touch;-webkit-transform:translate3d(0px,0,0)}
     
     /*CSS3 caching - needs to be at the bottom of the style sheet*/
     body:after{content:url(imgs/img_1.jpg) url(imgs/img_2.jpg) url(imgs/img_3.jpg) url(imgs/img_4.jpg) url(imgs/img_5.jpg) url(imgs/img_6.jpg) url(imgs/img_7.jpg) url(imgs/img_8.jpg) url(imgs/img_9.jpg) url(imgs/img_10.jpg);display:none;}
@@ -52,9 +52,6 @@ $(document).ready(function() {
         $('.swiper-slide').css('height', $(window).height());
         swiperN1.reInit();
     };
-    
-    /*alert($('.swiper-wrapper').width());
-    alert($('.swiper-container').width());*/
     
 });
 /*
@@ -90,13 +87,13 @@ var request = new XMLHttpRequest();
       <div id="pg_1" class="swiper-slide orange-slide">Slide 2 </div>
       <div id="pg_2" class="swiper-slide green-slide"> Slide 3 </div>
       <div id="pg_3" class="swiper-slide red-slide"> Slide 4 </div>
-      <!--<div id="pg_4" class="swiper-slide orange-slide"> Slide 5 </div>
+      <div id="pg_4" class="swiper-slide orange-slide"> Slide 5 </div>
       <div id="pg_5" class="swiper-slide green-slide"> Slide 6 </div>
       <div id="pg_6" class="swiper-slide red-slide"> Slide 7 </div>
       <div id="pg_7" class="swiper-slide orange-slide"> Slide 8 </div>
       <div id="pg_8" class="swiper-slide green-slide"> Slide 9 </div>
       <div id="pg_9" class="swiper-slide red-slide"> Slide 10 </div>
-      <div id="pg_10" class="swiper-slide orange-slide"> Slide 11 </div>-->
+      <div id="pg_10" class="swiper-slide orange-slide"> Slide 11 </div>
     </div>
   </div>
 

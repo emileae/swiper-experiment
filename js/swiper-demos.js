@@ -10,7 +10,7 @@ $(function(){
     })
     
     thresh_width = 10;
-    number_of_slides = 4;//set number of slides and make sure that html in index.html corresponds
+    number_of_slides = 11;//set number of slides and make sure that html in index.html corresponds
     slide_indexes_nested = [];//slide indexes containing vertical swipers
 
 	/* Nested Swipers. Vertical Swiper inside of horizontal: */	
